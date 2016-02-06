@@ -46,6 +46,7 @@ class Item(Base):
     description = db.Column(db.String(1024), nullable=False)
     category = db.Column(db.String(128), nullable=False)
     photo = db.Column(db.String(1024), nullable=False)
+    facebook_id = db.Column(db.String(256))
 
     price = db.Column(db.Float)
 
