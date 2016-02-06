@@ -1,13 +1,13 @@
 # Todo
 
 ##Back End
-* User model (attributes)
-* Product/item model
-* FaceBook integration / Graph API
-* Categorical Guess
-* Contact Process
-* Editing Products
-* Create post page
+[x] User model (attributes)
+[ ] Product/item model
+[ ] FaceBook integration / Graph API
+[ ] Categorical Guess
+[ ] Contact Process
+[ ] Editing Products
+[ ] Create post page
 
 
 ##Front End
