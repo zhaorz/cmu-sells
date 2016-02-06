@@ -27,6 +27,7 @@ facebook = oauth.remote_app('facebook',
     base_url='https://graph.facebook.com/',
     request_token_url=None,
     access_token_url='/oauth/access_token',
+    access_token_method='GET',
     authorize_url='https://www.facebook.com/dialog/oauth',
     consumer_key=app.config['FACEBOOK_APP_ID'],
     consumer_secret=app.config['FACEBOOK_APP_SECRET'],
@@ -38,6 +39,8 @@ def refresh():
     form = RefreshForm()
     if form.validate_on_submit():
         flash('Refreshed')
+        user_data = facebook.get('/me').data
+        print user_data
         return redirect(url_for('base.index'))
     return redirect(url_for('base.index'))
 
@@ -63,7 +66,6 @@ def facebook_authorized(resp):
             request.args['error_description']
         )
     session['oauth_token'] = (resp['access_token'], '')
-    print("token", session['oauth_token'])
     #me = facebook.get('/me')
     #return 'Logged in as id=%s name=%s redirect=%s' % \
     #    (me.data['id'], me.data['name'], request.args.get('next'))
