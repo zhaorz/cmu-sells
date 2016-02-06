@@ -22,6 +22,9 @@ mod_base = Blueprint('base', __name__, url_prefix='')
 
 @mod_base.route('/', methods=['GET'])
 def index():
+    if not ('oauth_token' in session and session['oauth_token']):
+        return render_template('login.html')
+
     form = RefreshForm()
     items = [ {
         'name' : item.name,
