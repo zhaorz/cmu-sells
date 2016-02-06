@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+{% extends "base.html" %}
+{% block title %}Name of the item{% endblock %}
+
+{% block content %}
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<title> name of the item </title>
-<h1> CMU Sells </h1>
 </head>
 
 <body>
@@ -23,5 +25,6 @@ recommend icon
 
 buy/reserve icon
 
+{% endblock %}
 
 </body>
