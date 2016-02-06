@@ -1,1 +1,49 @@
-<h1>New Item</h1>
+{% extends "base.html" %}
+{% block title %}New Item{% endblock %}
+
+{% block content %}
+
+<div class="input-field col s12 m6">
+		<select="icons">
+			<option value="" disable selected>Choose your option</option>
+			<option value="1">Buying</option>
+			<option value="2">Selling</option>
+		</select>
+	<label>Category Select</label>
+</div>
+
+<div class="input-field col s12 s6">
+    <select="icons">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Textbook</option>
+      <option value="2">Furniture</option>
+      <option value="3">Clothing</option>
+      <option value="4">Technology</option>
+      <option value="5">Arts + Crafts</option>
+      <option value="6">Cosmetics</option>
+      <option value="7">Other</option>
+    </select>
+  <label>Category Select</label>
+</div>
+
+<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">shopping_basket</i>
+          <input id="icon_shopping_basket" type="text" class="validate">
+          <label for="icon_shopping_basket">Item Name</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">comment</i>
+          <input id="icon_comment" type="tel" class="validate">
+          <label for="icon_comment">Item Description</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+
+{% endblock %}
