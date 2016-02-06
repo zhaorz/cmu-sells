@@ -5,20 +5,28 @@
 
 
 <div class="container">
+  <div class="row">
   {% for item in items %}
-  <h5>{{ item.name }}</h5>
-
+    <div class="col s6">
+      <div class="card medium">
+        <div class="card-image">
+          <img src="{{ url_for('static', filename=item.photo) }}">
+          <span class="card-title">{{ item.name }}</span>
+        </div>
+        <div class="card-content">
+          <p>
+          {{ item.description }}
+          </p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
   {% endfor %}
+  </div>
 </div>
 
-{% endblock %}
-
-
-
-{% block footer %}
-<div id="footer">
-  Copyright © Team AwesomeSauce
-</div>
 {% endblock %}
 
 
