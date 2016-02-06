@@ -12,12 +12,20 @@
     <h1>CMU Sells</h1>
 
     <div id="nav">
-      <i>Search Bar<br>
+      <i>Search Bar</i><br>
       Filters<br>
       Categories
     </div>
 
     <div> <a href="http://0.0.0.0:8080/about">About</a> </div>
+
+    <div class="container">
+      {% for item in items %}
+        <h5>{{ item.name }}</h5>
+
+      {% endfor %}
+    </div>
+
 
 
 

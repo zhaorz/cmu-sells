@@ -12,13 +12,25 @@ from app import db
 
 # Import module models (i.e. User)
 from app.models import User
+from app.models import Item
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_base = Blueprint('base', __name__, url_prefix='')
 
 @mod_base.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template("index.html")
+    items = [ {
+        'name' : item.name,
+        'description' : item.description,
+        'category' : item.category,
+        'photo' : item.photo,
+        'price' : item.price,
+        'sold' : item.sold,
+        'hold' : item.hold,
+        'seller' : item.seller,
+        } for item in Item.query.all()]
+
+    return render_template("index.html", items=items)
 
 @mod_base.route('/login', methods=['GET', 'POST'])
 def login():
