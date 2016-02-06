@@ -17,6 +17,7 @@ from app.models import Item
 # Import forms
 from app.forms import RefreshForm
 
+from app.helpers import *
 import json
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
@@ -48,23 +49,20 @@ def refresh():
             # Insert new items
             for feed_id in feed_ids.difference(db_ids):
                 post = facebook.get('/' + feed_id + '?' +
-                        'fields=id,created_time,description,from,picture,' +
+                        'fields=id,created_time,message,from,picture,' +
                         'full_picture')
                 if post.status == 200:
                     data = post.data
                     print data
-                    if 'description' in data:
-                        description = data['description']
-                    else:
-                        description = ""
+                    message = data['message'] if 'message' in data else ""
                     db.session.add(Item(
-                        name=description,
-                        description=description,
+                        name=title(message),
+                        description=message,
                         category='Uncategorized',
                         photo=data['full_picture'] if 'full_picture' in data else "",
                         facebook_id=data['id'],
-                        price=0.0,
-                        sold=False,
+                        price=price(message),
+                        sold=True,
                         hold=False,
                         seller_id=None))
                 else:
