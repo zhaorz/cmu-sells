@@ -1,5 +1,6 @@
 # Import flask and template operators
-from flask import Flask, render_template, redirect, url_for, session, request
+from flask import Flask, render_template, redirect, url_for, session, \
+        request, flash
 
 # Import extensions
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -31,6 +32,12 @@ def login():
         next=request.args.get('next') or request.referrer or None,
         _external=True))
 
+@app.route('/logout')
+def logout():
+    session.pop('oauth_token', None)
+    flash('Logged out.')
+    return redirect(url_for('base.index'))
+
 
 @app.route('/login/authorized')
 @facebook.authorized_handler
@@ -45,7 +52,8 @@ def facebook_authorized(resp):
     #me = facebook.get('/me')
     #return 'Logged in as id=%s name=%s redirect=%s' % \
     #    (me.data['id'], me.data['name'], request.args.get('next'))
-    return "Logged in"
+    flash("Logged in.")
+    return redirect(url_for('base.index'))
 
 
 @facebook.tokengetter
