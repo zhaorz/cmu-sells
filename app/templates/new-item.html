@@ -3,13 +3,27 @@
 
 {% block content %}
 
-<div class="input-field col s11">
-		<select>
+<div class="input-field col s12 m6">
+		<select="icons">
 			<option value="" disable selected>Choose your option</option>
 			<option value="1">Buying</option>
 			<option value="2">Selling</option>
 		</select>
 	<label>Category Select</label>
+</div>
+
+<div class="input-field col s12 s6">
+    <select="icons">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Textbook</option>
+      <option value="2">Furniture</option>
+      <option value="3">Clothing</option>
+      <option value="4">Technology</option>
+      <option value="5">Arts + Crafts</option>
+      <option value="6">Cosmetics</option>
+      <option value="7">Other</option>
+    </select>
+  <label>Category Select</label>
 </div>
 
 <div class="row">
@@ -29,18 +43,7 @@
     </form>
   </div>
 
-<div class="input-field col s12">
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Textbook</option>
-      <option value="2">Furniture</option>
-      <option value="3">Clothing</option>
-      <option value="4">Technology</option>
-      <option value="5">Arts + Crafts</option>
-      <option value="6">Cosmetics</option>
-      <option value="7">Other</option>
-    </select>
-  <label>Category Select</label>
-</div>
+
+
 
 {% endblock %}
