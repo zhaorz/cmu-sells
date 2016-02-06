@@ -19,7 +19,7 @@
 
   </head>
 
-  <body>
+  <body class="eggshell">
 
     <nav class="navbar teal lighten-3">
       <div class="nav-wrapper">
@@ -30,6 +30,7 @@
           <li><a href="{{ url_for('fb.logout') }}">Log out</a></li>
           {% else %}
           <li><a href="{{ url_for('fb.login') }}">Log in</a></li>
+
           {% endif %}
         </ul>
       </div>
