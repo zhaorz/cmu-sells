@@ -1,0 +1,15 @@
+h1 {
+    color: rgb(0, 88, 140);
+    background-color: lightblue;
+    text-align: center;
+    font-family: "Serif";
+    font-size: 55px;
+}
+
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
