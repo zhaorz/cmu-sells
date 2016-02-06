@@ -1,7 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Name of the item{% endblock %}
+{% block title %}CMU Sells{% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
+
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+    
+<img src = "facebookimage" alt = "name of the item" style = "width: 500px; height: 500px">
+
+<p><strong> name of the item</strong></p>
+<p> username </p>
+<p> price </p>
+<p> description </p>
+
+
+
+eye icon
+=======
 
 <div class="container">
   <div class="row">
@@ -9,7 +28,9 @@
       <div class="card large">
           <img src="{{ url_for('static', filename=item.photo) }}"
                height = "500" weight = "500">
+      <div>
           <span class="card-title"><strong>{{ item.name }}</strong></span>
+      </div>
       </div>
     </div>
   </div>
@@ -19,8 +40,8 @@
       <div class="col s12 m12">
         <div class="card-panel teal">
           <span class="white-text">
-            <p align = "center"> <strong> Seller: </strong>{{item.seller}} </p>
-            <p align = "center"> <strong> Price: </strong> {{item.price}}</p>
+            <p align = "center"> <strong> Seller: </strong>{{item.seller.name}} </p>
+            <p align = "center"> <strong> Price: $ </strong> {{item.price}}</p>
             <p align = "center"> <strong> Description </strong> {{item.description}} </p>
           </span>
         </div>
@@ -29,10 +50,16 @@
 
 <div class = "row col s4 card-panel pink lighten-5">
   <p>eye icon
+>>>>>>> f336a11389a2e36cc2347cd919b464ad27759d0d
 recommend icon
-
 buy/reserve icon
   </p>
 </div>
 
+
+
 {% endblock %}
+<<<<<<< HEAD
+
+=======
+>>>>>>> f336a11389a2e36cc2347cd919b464ad27759d0d
