@@ -28,7 +28,7 @@ class User(Base):
     facebook_url    = db.Column(db.String(128),  nullable=False,
                                             unique=True)
 
-    items = db.relationship('Item', backref='user', lazy='dynamic')
+    items = db.relationship('Item', backref='seller', lazy='dynamic')
 
     watching = db.relationship(
             'Item',
