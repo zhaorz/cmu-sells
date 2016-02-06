@@ -25,6 +25,7 @@ def index():
         'name' : item.name,
         'description' : item.description,
         'category' : item.category,
+        'facebook_id' : item.facebook_id,
         'photo' : item.photo,
         'price' : item.price,
         'sold' : item.sold,

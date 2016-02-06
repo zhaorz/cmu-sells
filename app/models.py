@@ -48,7 +48,7 @@ class Item(Base):
     photo = db.Column(db.String(1024), nullable=False)
     facebook_id = db.Column(db.String(256))
 
-    price = db.Column(db.Float)
+    price = db.Column(db.String(128))
 
     sold = db.Column(db.Boolean)
     hold = db.Column(db.Boolean)
