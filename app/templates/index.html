@@ -1,22 +1,33 @@
-<!doctype html>
-<html>
+{% extends "base.html" %}
+{% block title %}CMU Sells{% endblock %}
 
-  <head>
-    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+{% block content %}
 
-    <title> CMU Sells </title>
-  </head>
 
-  <body>
-    <h1>CMU Sells</h1>
-
-    <div id="nav">
-      <i>Search Bar</i><br>
-      Filters<br>
-      Categories
+<div class="container">
+  <div class="row">
+  {% for item in items %}
+    <div class="col s6">
+      <div class="card medium">
+        <div class="card-image">
+          <img src="{{ url_for('static', filename=item.photo) }}">
+          <span class="card-title">{{ item.name }}</span>
+        </div>
+        <div class="card-content">
+          <p>
+          {{ item.description }}
+          </p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
     </div>
+  {% endfor %}
+  </div>
+</div>
 
+<<<<<<< HEAD
     <div> <a href="http://0.0.0.0:8080/about">About</a> </div>
 
     <div class="container">
@@ -33,7 +44,8 @@
     <div id="footer">
     Copyright © Team AwesomeSauce
     </div>
+=======
+{% endblock %}
+>>>>>>> 4a87cd6e3c0a644c1d816aa8bf0cdbb00502a4db
 
-  </body>
 
-</html>
