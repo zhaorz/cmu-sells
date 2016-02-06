@@ -14,7 +14,7 @@ The better half of For Sale @ CMU.
 This web application is designed to take feed information from the facebook group For Sale @ CMU and categorize the items in
 an easily accesible and clean format. 
 
-  ##Design
+  ###Design
   The design of the project is made to look like a typical online storefront, with the user having to login via facebook to
   interact with the site. There are multiple tabs which link to different categorizes to help navigate when searching for a
   particular item. 
@@ -28,7 +28,7 @@ an easily accesible and clean format.
   will mark the item as being on hold until the seller reaches back. Once an agreement is reached, the seller can mark the 
   item as sold which will be updated in our online store front.
   
-  ##Additional Features
+  ###Additional Features
   * 'eye' - user is keeping tabs on an item which shows up in a "watching" list for the user.
   * 'recommend' - user can tag another user to notify them of a particular item.
   * 'follow' - user can follow another user or group account to have more direct access to items they post.
