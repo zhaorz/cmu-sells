@@ -28,7 +28,9 @@ eye icon
       <div class="card large">
           <img src="{{ url_for('static', filename=item.photo) }}"
                height = "500" weight = "500">
+      <div>
           <span class="card-title"><strong>{{ item.name }}</strong></span>
+      </div>
       </div>
     </div>
   </div>
@@ -38,8 +40,8 @@ eye icon
       <div class="col s12 m12">
         <div class="card-panel teal">
           <span class="white-text">
-            <p align = "center"> <strong> Seller: </strong>{{item.seller}} </p>
-            <p align = "center"> <strong> Price: </strong> {{item.price}}</p>
+            <p align = "center"> <strong> Seller: </strong>{{item.seller.name}} </p>
+            <p align = "center"> <strong> Price: $ </strong> {{item.price}}</p>
             <p align = "center"> <strong> Description </strong> {{item.description}} </p>
           </span>
         </div>
