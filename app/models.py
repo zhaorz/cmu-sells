@@ -12,29 +12,53 @@ class Base(db.Model):
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
                                           onupdate=db.func.current_timestamp())
 
-# Define a User model
+
+watch_table = db.Table('watchers',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('item_id', db.Integer, db.ForeignKey('item.id'))
+)
+
 class User(Base):
 
     __tablename__ = 'user'
 
-    # User Name
     name    = db.Column(db.String(128),  nullable=False)
-
-    # Identification Data: email & password
     email    = db.Column(db.String(128),  nullable=False,
                                             unique=True)
-    password = db.Column(db.String(192),  nullable=False)
+    facebook_url    = db.Column(db.String(128),  nullable=False,
+                                            unique=True)
 
-    # Authorisation Data: role & status
-    role     = db.Column(db.SmallInteger, nullable=False)
-    status   = db.Column(db.SmallInteger, nullable=False)
+    items = db.relationship('Item', backref='seller', lazy='dynamic')
 
-    # New instance instantiation procedure
-    def __init__(self, name, email, password):
-
-        self.name     = name
-        self.email    = email
-        self.password = password
+    watching = db.relationship(
+            'Item',
+            secondary=watch_table,
+            back_populates='watchers')
 
     def __repr__(self):
         return '<User %r>' % (self.name)
+
+class Item(Base):
+
+    __tablename__ = 'item'
+
+    name = db.Column(db.String(256), nullable=False)
+    description = db.Column(db.String(1024), nullable=False)
+    category = db.Column(db.String(128), nullable=False)
+    photo = db.Column(db.String(1024), nullable=False)
+
+    price = db.Column(db.Float)
+
+    sold = db.Column(db.Boolean)
+    hold = db.Column(db.Boolean)
+
+    seller_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    watchers = db.relationship(
+            'User',
+            secondary=watch_table,
+            back_populates='watching')
+
+    def __repr__(self):
+        return '<Item %r>' % (self.name)
+

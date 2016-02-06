@@ -1,5 +1,8 @@
 html {
     font-family: 'Cinzel', serif;
+    text-align: center;
+    font-size: 15px
+    ;
 }
 
 
@@ -7,8 +10,38 @@ h1 {
     color: rgb(0, 88, 140);
     background-color: lightblue;
     text-align: center;
-    font-family: "Serif";
+    font-family: 'Cinzel', serif;
     font-size: 55px;
+}
+
+.background {
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  z-index: -1;
+
+  background-size: cover;
+}
+
+
+
+.content {
+
+    width: 60%;
+    
+    max-width: 400px;
+
+    margin: 100px auto;
+
+    padding: 50px;
+
+    background-color: white;
+
+    text-align: center;
 }
 
 #footer {
