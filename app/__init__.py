@@ -1,8 +1,10 @@
 # Import flask and template operators
 from flask import Flask, render_template
 
-# Import SQLAlchemy
+# Import extensions
 from flask.ext.sqlalchemy import SQLAlchemy
+from urllib.parse import urljoin
+from flask_oauth import OAuth
 
 # Define the WSGI application object
 app = Flask(__name__)

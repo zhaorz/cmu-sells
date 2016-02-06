@@ -27,3 +27,6 @@ CSRF_SESSION_KEY = "secret"
 # Secret key for signing cookies
 SECRET_KEY = "secret"
 
+FACEBOOK_APP_ID = '1552066145106412'
+FACEBOOK_APP_SECRET = '1666e141cdc128aa9925963541a81490'
+
