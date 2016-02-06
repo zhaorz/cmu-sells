@@ -19,11 +19,8 @@
 
   <body>
 
-<<<<<<< HEAD
-    <nav class="navbar light-blue lighten-3">
-=======
+    <nav class="navbar teal darken-4">
     <!-- <nav class="navbar teal darken-4">
->>>>>>> 4c9675b150310a3a0138a78ca4dfc10cfe3586ff
       <div class="nav-wrapper">
         <a href="{{ url_for('.index')}}" class="brand-logo center">CMU Sells</a>
       <! Dropdown Structure >
@@ -46,7 +43,7 @@
     <ul id="nav-mobile" class="right">
       <li><a href="{{ url_for('.index') }}">Home</a></li>
       <li><a href="{{ url_for('.about') }}">About</a></li>
-      <li><a href="{{ url_for('.login') }}">Log in</a></li>
+      <li><a href="{{ url_for('fb.login') }}">Log in</a></li>
       <li><a href="#!">New item</a></li>
     </ul>
   </div>
