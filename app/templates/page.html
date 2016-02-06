@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}CMU Sells{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    &nbsp;
+  </div>
+
+  <div id="grid" class="row">
+  {% for item in items %}
+    <div class="col s4">
+      <div class="card">
+        {% if item.photo != "" %}
+        <div class="card-image">
+          <img src="{{ item.photo }}">
+          <span class="card-title text-shadow">{{ item.name }}</span>
+        </div>
+        <div class="card-content">
+        {% else %}
+        <div class="card-content">
+          <span class="card-title">{{ item.name }}</span>
+        {% endif %}
+          <h5 class="green-text">
+            {{ item.price }}
+          </h5>
+          <h5 class="red-text">
+            {% if item.sold %}
+            Sold
+            {% endif %}
+          </h5>
+          <p class="wrap">
+          {{ item.description }}
+          </p>
+        </div>
+        <div class="card-action">
+          <a href="https://www.facebook.com/{{ item.facebook_id }}">Buy</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
+

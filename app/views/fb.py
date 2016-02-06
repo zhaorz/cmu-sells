@@ -20,6 +20,9 @@ from app.forms import RefreshForm
 from app.helpers import *
 import json
 import datetime
+import requests
+
+from sqlalchemy import desc
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_fb = Blueprint('fb', __name__, url_prefix='')
@@ -47,6 +50,9 @@ def refresh():
         if feed.status == 200:
             feed_ids = { post['id'] for post in feed.data['data'] }
             db_ids = { item.facebook_id for item in Item.query.all() }
+            # Save pagination
+            session['paginate_previous'] = feed.data['paging']['previous']
+            session['paginate_next'] = feed.data['paging']['next']
             # Insert new items
             for feed_id in feed_ids.difference(db_ids):
                 post = facebook.get('/' + feed_id + '?' +
@@ -54,7 +60,6 @@ def refresh():
                         'full_picture')
                 if post.status == 200:
                     data = post.data
-                    print data
                     message = data['message'] if 'message' in data else ""
                     if not message:
                         continue
@@ -77,6 +82,66 @@ def refresh():
         db.session.commit()
         return redirect(url_for('base.index'))
     return redirect(url_for('base.index'))
+
+@mod_fb.route('/next')
+def next():
+    if not ('paginate_next' in session and session['paginate_next']):
+        return 'No next page'
+    print 'paginate_next:', session['paginate_next']
+    feed = facebook.get(session['paginate_next'])
+    print "status:", feed.status
+    if feed.status == 200:
+        data = feed.data
+        print data
+        feed_ids = { post['id'] for post in data['data'] }
+        db_ids = { item.facebook_id for item in Item.query.all() }
+        # Save pagination
+        session['paginate_previous'] = data['paging']['previous']
+        session['paginate_next'] = data['paging']['next']
+        # Insert new items
+        for feed_id in feed_ids.difference(db_ids):
+            post = facebook.get('/' + feed_id + '?' +
+                    'fields=id,updated_time,message,from,picture,' +
+                    'full_picture')
+            if post.status == 200:
+                data = post.data
+                message = data['message'] if 'message' in data else ""
+                if not message:
+                    continue
+                db.session.add(Item(
+                    name=title(message),
+                    description=message,
+                    category='Uncategorized',
+                    photo=data['full_picture'] if 'full_picture' in data else "",
+                    facebook_id=data['id'],
+                    updated_time=datetime.datetime.strptime(data['updated_time'],
+                        '%Y-%m-%dT%H:%M:%S+0000'),
+                    price=price(message),
+                    sold=False,
+                    hold=False,
+                    seller_id=None))
+            else:
+                return 'Refresh failed'
+    else:
+        return 'Refresh failed'
+    db.session.commit()
+
+    # Render items
+    items = [ {
+        'name' : item.name,
+        'description' : item.description,
+        'category' : item.category,
+        'facebook_id' : item.facebook_id,
+        'photo' : item.photo,
+        'price' : item.price,
+        'sold' : item.sold,
+        'hold' : item.hold,
+        'seller' : item.seller,
+        } for item in Item.query.filter(
+            Item.facebook_id.in_(feed_ids)).order_by(desc(Item.updated_time)).all() ]
+
+    return render_template("page.html", items=items)
+
 
 @mod_fb.route('/login')
 def login():
