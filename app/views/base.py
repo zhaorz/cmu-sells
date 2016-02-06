@@ -38,9 +38,11 @@ def index():
 def about():
     return render_template("about.html")
 
-@mod_base.route('/item', methods=['GET', 'POST'])
-def item():
-    return render_template("item.html")
+@mod_base.route('/item/<id>', methods=['GET', 'POST'])
+def item(id=None):
+    item = Item.query.filter_by(id=int(id)).first()
+    print("item", item)
+    return render_template("item.html", item=item)
 
 @mod_base.route('/new-item', methods=['GET', 'POST'])
 def new_item():
