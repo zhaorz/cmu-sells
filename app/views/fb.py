@@ -17,6 +17,8 @@ from app.models import Item
 # Import forms
 from app.forms import RefreshForm
 
+import json
+
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_fb = Blueprint('fb', __name__, url_prefix='')
 
@@ -39,11 +41,39 @@ def refresh():
     form = RefreshForm()
     if form.validate_on_submit():
         flash('Refreshed')
-        user_data = facebook.get('/me').data
-        print user_data
+        feed = facebook.get('/580647781993254/feed')
+        if feed.status == 200:
+            feed_ids = { post['id'] for post in feed.data['data'] }
+            db_ids = { item.facebook_id for item in Item.query.all() }
+            # Insert new items
+            for feed_id in feed_ids.difference(db_ids):
+                post = facebook.get('/' + feed_id + '?' +
+                        'fields=id,created_time,description,from,picture,' +
+                        'full_picture')
+                if post.status == 200:
+                    data = post.data
+                    print data
+                    if 'description' in data:
+                        description = data['description']
+                    else:
+                        description = ""
+                    db.session.add(Item(
+                        name=description,
+                        description=description,
+                        category='Uncategorized',
+                        photo=data['full_picture'] if 'full_picture' in data else "",
+                        facebook_id=data['id'],
+                        price=0.0,
+                        sold=False,
+                        hold=False,
+                        seller_id=None))
+                else:
+                    flash('Refresh failed')
+        else:
+            flash('Refresh failed')
+        db.session.commit()
         return redirect(url_for('base.index'))
     return redirect(url_for('base.index'))
-
 
 @mod_fb.route('/login')
 def login():
