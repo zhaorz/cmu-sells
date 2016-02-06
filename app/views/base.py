@@ -36,7 +36,7 @@ def index():
         'sold' : item.sold,
         'hold' : item.hold,
         'seller' : item.seller,
-        } for item in Item.query.order_by(desc(Item.updated_time)).all() ]
+        } for item in Item.query.order_by(desc(Item.updated_time)).all() ][:25]
 
     return render_template("index.html", form=form, items=items)
 

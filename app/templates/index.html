@@ -53,6 +53,17 @@
     </div>
   {% endfor %}
   </div>
+
+  <div class="center">
+    <form method="POST" action="{{ url_for('fb.next') }}">
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        <i class="material-icons white-text">chevron_right</i>
+      </button>
+    </form>
+  </div>
+  <div>
+    &nbsp;
+  </div>
 </div>
 
 
