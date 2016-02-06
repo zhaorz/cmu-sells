@@ -1,8 +1,7 @@
 html {
     font-family: 'Cinzel', serif;
     text-align: center;
-    font-size: 15px
-    ;
+    font-size: 15px;
 }
 
 
@@ -49,5 +48,6 @@ h1 {
     color: black;
     clear:both;
     text-align:center;
+    font-size: 9px;
     padding:5px;
 }
