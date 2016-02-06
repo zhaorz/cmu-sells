@@ -40,3 +40,6 @@ def new_item():
 def user():
     return render_template("user.html")
 
+@mod_base.route('/test', methods=['GET', 'POST'])
+def test():
+    return render_template("test.html")
