@@ -9,10 +9,9 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 
 # Import module forms
-from app.mod_base.forms import LoginForm
 
 # Import module models (i.e. User)
-from app.mod_base.models import User
+from app.models import User
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_base = Blueprint('base', __name__, url_prefix='/')
@@ -20,5 +19,5 @@ mod_base = Blueprint('base', __name__, url_prefix='/')
 # Set the route and accepted methods
 @mod_base.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template("base/index.html")
+    return render_template("index.html")
 
