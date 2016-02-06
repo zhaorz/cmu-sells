@@ -1,4 +1,9 @@
 # cmu-sells
 The better half of For Sale @ CMU.
 
-This is Jen.
+
+Amazing people:
+Richard Zhao
+Jenny Wang
+Harrin Choi
+Jennifer Yang
