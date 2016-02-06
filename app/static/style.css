@@ -3,5 +3,22 @@
 }
 
 #title {
-  padding-left: 25px;
+  font-weight: 300;
 }
+
+#footer {
+  margin-top: 0;
+}
+
+#grid {
+  margin-bottom: 0;
+}
+
+.eggshell {
+  background-color: #fffaed;
+}
+
+nav > div > ul > li > a {
+  font-weight: 300;
+}
+
