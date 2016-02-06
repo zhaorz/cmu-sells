@@ -9,6 +9,7 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 
 # Import module forms
+from app.forms import RefreshForm
 
 # Import module models (i.e. User)
 from app.models import User
@@ -17,8 +18,9 @@ from app.models import Item
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_base = Blueprint('base', __name__, url_prefix='')
 
-@mod_base.route('/', methods=['GET', 'POST'])
+@mod_base.route('/', methods=['GET'])
 def index():
+    form = RefreshForm()
     items = [ {
         'name' : item.name,
         'description' : item.description,
@@ -30,7 +32,7 @@ def index():
         'seller' : item.seller,
         } for item in Item.query.all()]
 
-    return render_template("index.html", items=items)
+    return render_template("index.html", form=form, items=items)
 
 @mod_base.route('/about', methods=['GET'])
 def about():

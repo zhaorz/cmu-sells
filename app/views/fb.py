@@ -14,8 +14,11 @@ from app import db
 from app.models import User
 from app.models import Item
 
+# Import forms
+from app.forms import RefreshForm
+
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
-mod_auth = Blueprint('auth', __name__, url_prefix='')
+mod_fb = Blueprint('fb', __name__, url_prefix='')
 
 # OAuth
 oauth = OAuth()
@@ -30,20 +33,28 @@ facebook = oauth.remote_app('facebook',
     request_token_params={'scope': 'email'}
 )
 
+@mod_fb.route('/', methods=['POST'])
+def refresh():
+    form = RefreshForm()
+    if form.validate_on_submit():
+        flash('Refreshed')
+        return redirect(url_for('base.index'))
+    return redirect(url_for('base.index'))
 
-@mod_auth.route('/login')
+
+@mod_fb.route('/login')
 def login():
-    return facebook.authorize(callback=url_for('auth.facebook_authorized',
+    return facebook.authorize(callback=url_for('fb.facebook_authorized',
         next=request.args.get('next') or request.referrer or None,
         _external=True))
 
-@mod_auth.route('/logout')
+@mod_fb.route('/logout')
 def logout():
     session.pop('oauth_token', None)
     flash('Logged out.')
     return redirect(url_for('base.index'))
 
-@mod_auth.route('/login/authorized')
+@mod_fb.route('/login/authorized')
 @facebook.authorized_handler
 def facebook_authorized(resp):
     if resp is None:

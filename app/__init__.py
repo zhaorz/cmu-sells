@@ -23,11 +23,11 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (mod_auth)
 from app.views.base import mod_base as base_module
-from app.views.auth import mod_auth as auth_module
+from app.views.fb import mod_fb as fb_module
 
 # Register blueprint(s)
 app.register_blueprint(base_module)
-app.register_blueprint(auth_module)
+app.register_blueprint(fb_module)
 
 # Build the database:
 # This will create the database file using SQLAlchemy
