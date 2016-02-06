@@ -47,6 +47,7 @@ class Item(Base):
     category = db.Column(db.String(128), nullable=False)
     photo = db.Column(db.String(1024), nullable=False)
     facebook_id = db.Column(db.String(256))
+    updated_time = db.Column(db.DateTime)
 
     price = db.Column(db.String(128))
 

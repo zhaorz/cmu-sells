@@ -15,6 +15,8 @@ from app.forms import RefreshForm
 from app.models import User
 from app.models import Item
 
+from sqlalchemy import desc
+
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_base = Blueprint('base', __name__, url_prefix='')
 
@@ -31,7 +33,7 @@ def index():
         'sold' : item.sold,
         'hold' : item.hold,
         'seller' : item.seller,
-        } for item in Item.query.all()]
+        } for item in Item.query.order_by(desc(Item.updated_time)).all() ]
 
     return render_template("index.html", form=form, items=items)
 
