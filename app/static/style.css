@@ -25,15 +25,13 @@ nav > div > ul > li > a {
 }
 
 .text-shadow {
-  text-shadow: 1px 1px 2px #333;
+  text-shadow: 2px 2px 3px #333;
 }
 
 .eggshell {
-  background-color: #fffaed;
+  background-color:#fffaed;
 }
 
 .wrap {
   word-wrap: break-word;
 }
-
-
