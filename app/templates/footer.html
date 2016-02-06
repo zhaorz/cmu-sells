@@ -1,4 +1,4 @@
-<footer class="page-footer teal darken-4">
+<footer id="footer" class="page-footer teal lighten-3">
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
@@ -8,27 +8,14 @@
 
       </div>
       <div class="col l3 s12">
-        <h5 class="white-text">Pages</h5>
-        <ul>
-          <li><a class="white-text" href="http://0.0.0.0:8080/about">About</a></li>
-          <li><a class="white-text" href="#!">Sign up</a></li>
-          <li><a class="white-text" href="#!">Post new item</a></li>
-        </ul>
+        <h5 class="white-text"><a href="{{ url_for('base.about') }}" class="white-text">About</a></h5>
       </div>
-      <div class="col l3 s12">
-        <h5 class="white-text">Connect</h5>
-        <ul>
-          <li><a class="white-text" href="#!">Link 1</a></li>
-          <li><a class="white-text" href="#!">Link 2</a></li>
-          <li><a class="white-text" href="#!">Link 3</a></li>
-          <li><a class="white-text" href="#!">Link 4</a></li>
-        </ul>
-      </div>
+
     </div>
   </div>
   <div class="footer-copyright">
     <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      © 2016
     </div>
   </div>
 </footer>

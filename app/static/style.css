@@ -2,3 +2,23 @@
   text-shadow: 1px 1px 2px #333;
 }
 
+#title {
+  font-weight: 300;
+}
+
+#footer {
+  margin-top: 0;
+}
+
+#grid {
+  margin-bottom: 0;
+}
+
+.eggshell {
+  background-color: #fffaed;
+}
+
+nav > div > ul > li > a {
+  font-weight: 300;
+}
+
