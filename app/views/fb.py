@@ -56,6 +56,8 @@ def refresh():
                     data = post.data
                     print data
                     message = data['message'] if 'message' in data else ""
+                    if not message:
+                        continue
                     db.session.add(Item(
                         name=title(message),
                         description=message,
