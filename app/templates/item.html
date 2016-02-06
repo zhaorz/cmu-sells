@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html>
 {% extends "base.html" %}
 {% block title %}Name of the item{% endblock %}
 
 {% block content %}
-<head>
-<link rel="stylesheet" type="text/css" href="style.css">
 
-</head>
-
-<body>
-    
-<img src = "facebookimage" alt = "name of the item" style = "width: 500px; height: 500px">
+<div class="container">
+  <div class="row">
+  {% for item in items %}
+    <div class="col s6">
+      <div class="card medium">
+        <div class="card-image">
+          <img src="{{ url_for('static', filename=item.photo) }}">
+          <span class="card-title">{{ item.name }}</span>
+        </div>
+        <div class="card-content">
+          <p>
+          {{ item.description }}
+          </p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
 
 <p><strong> name of the item</strong></p>
 <p> username </p>
@@ -26,5 +39,3 @@ recommend icon
 buy/reserve icon
 
 {% endblock %}
-
-</body>
