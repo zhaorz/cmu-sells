@@ -32,10 +32,6 @@ def index():
 
     return render_template("index.html", items=items)
 
-@mod_base.route('/login', methods=['GET', 'POST'])
-def login():
-    return render_template("login.html")
-
 @mod_base.route('/about', methods=['GET'])
 def about():
     return render_template("about.html")
