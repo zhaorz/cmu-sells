@@ -14,6 +14,21 @@ h1 {
     font-size: 55px;
 }
 
+.background {
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  z-index: -1;
+
+  background-size: cover;
+}
+
+
+
 .content {
 
     width: 60%;
@@ -35,10 +50,4 @@ h1 {
     clear:both;
     text-align:center;
     padding:5px;
-}
-
-#iteminfo {
-    width = 300px;
-    float: right;
-    padding: 10px;
 }
