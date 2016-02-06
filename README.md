@@ -8,6 +8,12 @@ First, make sure the virtual environment is activated. If not, run
 $ . venv/bin/activate
 ```
 
+You may have to install some more requirements.
+
+```
+$ pip install -r requirements.txt
+```
+
 Then, run these two commands to start the server
 
 ```
