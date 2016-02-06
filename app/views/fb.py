@@ -48,7 +48,8 @@ def refresh():
             # Insert new items
             for feed_id in feed_ids.difference(db_ids):
                 post = facebook.get('/' + feed_id + '?' +
-                        'fields=id,created_time,description,from,picture')
+                        'fields=id,created_time,description,from,picture,' +
+                        'full_picture')
                 if post.status == 200:
                     data = post.data
                     print data
@@ -60,7 +61,7 @@ def refresh():
                         name=description,
                         description=description,
                         category='Uncategorized',
-                        photo=data['picture'] if 'picture' in data else "",
+                        photo=data['full_picture'] if 'full_picture' in data else "",
                         facebook_id=data['id'],
                         price=0.0,
                         sold=False,
