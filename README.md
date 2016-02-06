@@ -5,6 +5,7 @@ The better half of For Sale @ CMU.
 First, make sure the virtual environment is activated. If not, run
 
 ```
+$ virtualenv -p /usr/bin/python2.7 venv
 $ . venv/bin/activate
 ```
 

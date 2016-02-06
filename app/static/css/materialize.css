@@ -7801,7 +7801,7 @@ small {
 }
 
 .card.large {
-  height: 500px;
+  height: 600px;
 }
 
 .card .card-image {
@@ -8264,7 +8264,7 @@ button.btn-floating {
 }
 
 .dropdown-content li > a, .dropdown-content li > span {
-  font-size: 16px;
+  font-size: 216px;
   color: #26a69a;
   display: block;
   line-height: 22px;
