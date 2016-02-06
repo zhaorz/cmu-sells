@@ -14,10 +14,29 @@ from app import db
 from app.models import User
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
-mod_base = Blueprint('base', __name__, url_prefix='/')
+mod_base = Blueprint('base', __name__, url_prefix='')
 
-# Set the route and accepted methods
 @mod_base.route('/', methods=['GET', 'POST'])
 def index():
     return render_template("index.html")
+
+@mod_base.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template("login.html")
+
+@mod_base.route('/about', methods=['GET'])
+def about():
+    return render_template("about.html")
+
+@mod_base.route('/item', methods=['GET', 'POST'])
+def item():
+    return render_template("item.html")
+
+@mod_base.route('/new-item', methods=['GET', 'POST'])
+def new_item():
+    return render_template("new-item.html")
+
+@mod_base.route('/user', methods=['GET', 'POST'])
+def user():
+    return render_template("user.html")
 
